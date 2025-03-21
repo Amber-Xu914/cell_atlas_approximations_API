@@ -5,6 +5,7 @@
 
 # Early import forfeits the credit warning for atlasapprox
 import os
+from sphinx_gallery.sorting import FileNameSortKey
 
 os.environ["ATLASAPPROX_HIDECREDITS"] = "yes"
 
@@ -37,6 +38,7 @@ sphinx_gallery_conf = {
     "gallery_dirs": [
         "python/gallery",
     ],
+    'within_subsection_order': FileNameSortKey,
 }
 
 # -- Options for HTML output -------------------------------------------------
@@ -44,3 +46,4 @@ sphinx_gallery_conf = {
 
 html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
+html_css_files = ['css/custom.css']

@@ -19,14 +19,48 @@ Below is a gallery of examples for the atlasapprox APIs in Python.
 
 .. only:: html
 
-  .. image:: /python/gallery/images/thumb/sphx_glr_quickstart_thumb.png
+  .. image:: /python/gallery/images/thumb/sphx_glr_0_quickstart_thumb.png
     :alt:
 
-  :ref:`sphx_glr_python_gallery_quickstart.py`
+  :ref:`sphx_glr_python_gallery_0_quickstart.py`
 
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">Quickstart</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The atlasapprox API provides access to approximated single-cell data across 28 species, including both animals and plants. You can explore data from species such as Homo sapiens (humans), Mus musculus (mice), Arabidopsis thaliana (thale cress), and Zea mays (corn). Follow this guide to get started with installation, basic usage, and example queries.">
+
+.. only:: html
+
+  .. image:: /python/gallery/images/thumb/sphx_glr_1_user_guide_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_python_gallery_1_user_guide.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Beginner guide</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Investigating cell atlases often involves exploring gene expression patterns across different cell types and organs. This tutorial guides you through using the atlasapprox API to explore gene expression data effectively. You will gain a general idea of how to query average expression, discover patterns of similar genes, identify marker genes, and visualize the data.">
+
+.. only:: html
+
+  .. image:: /python/gallery/images/thumb/sphx_glr_2_avergage_expression_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_python_gallery_2_avergage_expression.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exploring average gene expression</div>
     </div>
 
 
@@ -40,7 +74,9 @@ Below is a gallery of examples for the atlasapprox APIs in Python.
 .. toctree::
    :hidden:
 
-   /python/gallery/quickstart
+   /python/gallery/0_quickstart
+   /python/gallery/1_user_guide
+   /python/gallery/2_avergage_expression
 
 
 .. only:: html
