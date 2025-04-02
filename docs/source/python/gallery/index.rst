@@ -15,7 +15,7 @@ Below is a gallery of examples for the atlasapprox APIs in Python.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="This example shows a quick and easy example of how to use atlasapprox to get and plot the expression of some gees in a specific organ of a specific organism.">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows a quick and easy example of how to use atlasapprox to get and plot the expression of some gees in a  specific organ of a specific organism.">
 
 .. only:: html
 
@@ -32,7 +32,7 @@ Below is a gallery of examples for the atlasapprox APIs in Python.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="The atlasapprox API provides access to approximated single-cell data across 28 species, including both animals and plants. You can explore data from species such as Homo sapiens (humans), Mus musculus (mice), Arabidopsis thaliana (thale cress), and Zea mays (corn). Follow this guide to get started with installation, basic usage, and example queries.">
+    <div class="sphx-glr-thumbcontainer" tooltip="The atlasapprox API provides access to approximated single-cell data across 30 species, including both animals and plants. You can explore data from species such as Homo sapiens (humans), Mus musculus (mice), Arabidopsis thaliana (thale cress), and Zea mays (corn). Follow this guide to get started with installation, basic usage, and example queries.">
 
 .. only:: html
 

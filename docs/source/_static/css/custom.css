@@ -27,6 +27,35 @@ table th, table td {
     font-size: 14px; /* Ensures text remains readable */
 }
 
+/* Improve code block readability */
+pre {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 0.9em;
+    line-height: 1.5;
+    overflow-x: auto; /* Add horizontal scroll for long code lines */
+}
+
+/* Style tables */
+/* Ensure all tables have borders, padding, and alignment */
+table {
+    border-collapse: collapse !important; /* Ensure borders collapse into a single line */
+    max-width: 100% !important; /* Maintain max width */
+    max-height: 400px !important; /* Maintain max height */
+    overflow-x: auto !important; /* Enable horizontal scrolling */
+    overflow-y: auto !important; /* Enable vertical scrolling */
+    display: block !important; /* Ensure table behaves as a block */
+}
+
+table th, table td {
+    border: 1px solid #ddd !important; /* Force border on all sides */
+    padding: 6px; /* Unified padding */
+    text-align: left;
+    font-size: 14px; /* Ensures text remains readable */
+}
+
 /* Style table headers */
 table th {
     background-color: #f1f1f1;
@@ -95,7 +124,6 @@ a.reference.external::after {
 
 /* Ensure the gallery grid layout */
 .sphx-glr-thumbcontainer {
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -106,8 +134,11 @@ a.reference.external::after {
     padding: 15px;
     margin: 10px;
     width: 150px; /* Adjust width */
-    height: 150px; /* Adjust height */
-    overflow: hidden;
+    height: 150px; /* Allow the container to grow with the content */
+    overflow: visible !important; /* Prevent clipping of the title */
+    line-height: 1.2em;
+    white-space: normal !important;
+    display: inline-block;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
@@ -123,10 +154,11 @@ a.reference.external::after {
     font-weight: bold;
     color: #333;
     margin-top: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 90%;
+    white-space: normal !important; /* Allow text to wrap */
+    overflow: visible !important; /* Prevent clipping */
+    text-overflow: initial !important; /* Disable ellipsis */
+    width: 100%; /* Allow the title to use the full width of the container */
+    line-height: 1.2em; /* Improve readability for wrapped text */
 }
 
 /* Style the images inside the thumbnails */
@@ -150,4 +182,13 @@ a.reference.external::after {
     justify-content: center; /* Center thumbnails in the row */
     gap: 20px; /* Increase spacing between thumbnails */
     align-items: flex-start; /* Align items to the top */
+}
+
+.sphx-glr-thumbcontainer[tooltip]:hover::before,
+.sphx-glr-thumbcontainer[tooltip]:hover::after {
+    display: none;
+}
+
+div.sphx-glr-download-link-note {
+    display: none;
 }

@@ -5,25 +5,26 @@ Beginner guide
 ==============
 
 The `atlasapprox <https://atlasapprox.readthedocs.io/en/latest/index.html>`_
-API provides access to approximated single-cell data across 28 species, including
+API provides access to approximated single-cell data across 30 species, including
 both animals and plants. You can explore data from species such as *Homo sapiens*
 (humans), *Mus musculus* (mice), *Arabidopsis thaliana* (thale cress), and *Zea mays* (corn).
 Follow this guide to get started with installation, basic usage, and example queries.
 """
 
 # %%
-# .. note::
+# To ensure consistent dependencies, setting up a virtual environment is recommended before installing the package.
+# Here's one way to do it:
 #
-#     To ensure consistent dependencies, setting up a virtual environment is recommended
-#     before installing the package. Here's one way to do it:
+# Create a virtual environment:
+#     ``python -m venv myenv``
 #
-#     Create a virtual environment:    ``python -m venv myenv``
+# Activate your environment (use the appropriate command for your OS):
 #
-#     Activate your environment (use the appropriate command for your OS)
+# For macOS/Linux users:
+#     ``source myenv/bin/activate``
 #
-#     For macOS/Linux users:    ``source myenv/bin/activate``
-#
-#     For Windows users:    ``myenv\\Scripts\\activate``
+# For Windows users:
+#     ``myenv\Scripts\activate``
 
 
 # %%
@@ -33,7 +34,7 @@ Follow this guide to get started with installation, basic usage, and example que
 # Use *pip* to install the *atlasapprox* Python package:
 #     ``pip install atlasapprox``
 
-#%%
+# %%
 # Initialize the API
 # ------------------
 # Import the *atlasapprox* Python package and create an API object:
@@ -44,10 +45,10 @@ api = atlasapprox.API()
 # %%
 # Getting average gene expression
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-# The ``average`` function allows you to retrieve the average gene expression data fo
-# selected genes within an organism's specific organ.
+# The ``average`` function allows you to retrieve gene expression levels for selected genes in a specific organ of an 
+# organism.
 #
-# The following example shows how to examine the average expression of five genes 
+# The following example shows how to examine the average expression of five genes
 # (*COL13A1*, *COL14A1*, *TGFBI*, *PDGFRA*, *GZMA*) in the human lung:
 
 # Call API function with params
@@ -73,6 +74,12 @@ avg_gene_expr_lung
 # %%
 # Conclusion
 # ^^^^^^^^^^
-# This tutorial provided a quick start guide to use the *atlasapprox* Python package.
+# This tutorial provided a quick-start guide to using the *atlasapprox* Python package.
 # For more detailed information, refer to the official
 # `documentation <https://atlasapprox.readthedocs.io/en/latest/python/index.html>`_.
+
+# %%
+# Page source
+# -----------
+
+# sphinx_gallery_thumbnail_path = '_static/beginner_guide.png'
