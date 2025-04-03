@@ -65,7 +65,7 @@ avg_gene_expr_lung
 # %%
 # Understand the output
 # ---------------------
-# This method returns a *Pandas DataFrame* where:
+# This method returns a **pandas.DataFrame** where:
 #
 # - Each row represents a gene.
 # - Each column corresponds to a cell type.

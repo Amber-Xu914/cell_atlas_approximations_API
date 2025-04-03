@@ -53,14 +53,31 @@ Below is a gallery of examples for the atlasapprox APIs in Python.
 
 .. only:: html
 
-  .. image:: /python/gallery/images/thumb/sphx_glr_2_avergage_expression_thumb.png
+  .. image:: /python/gallery/images/thumb/sphx_glr_2_average_expression_thumb.png
     :alt:
 
-  :ref:`sphx_glr_python_gallery_2_avergage_expression.py`
+  :ref:`sphx_glr_python_gallery_2_average_expression.py`
 
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">Exploring average gene expression</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Investigating cell atlases often involves exploring gene expression patterns across different cell types and organs. This tutorial guides you through using the atlasapprox API to explore gene expression data effectively. You will gain a general idea of how to query average expression, discover patterns among similar genes, identify marker genes, and visualize the data.">
+
+.. only:: html
+
+  .. image:: /python/gallery/images/thumb/sphx_glr_3_cell_type_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_python_gallery_3_cell_type.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exploring cell types</div>
     </div>
 
 
@@ -76,7 +93,8 @@ Below is a gallery of examples for the atlasapprox APIs in Python.
 
    /python/gallery/0_quickstart
    /python/gallery/1_user_guide
-   /python/gallery/2_avergage_expression
+   /python/gallery/2_average_expression
+   /python/gallery/3_cell_type
 
 
 .. only:: html

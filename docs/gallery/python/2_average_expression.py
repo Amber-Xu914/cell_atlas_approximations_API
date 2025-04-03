@@ -64,13 +64,13 @@ avg_gene_expr_lung
 # %%
 # Understand the output
 # ---------------------
-# This method returns a *Pandas DataFrame* where:
+# This method returns a **pandas.DataFrame** where:
 #
 # - Each row represents a gene.
 # - Each column corresponds to a cell type.
 # - The values indicate the average gene expression, measured in counts per ten thousand (cptt).
 #
-# A glance at the DataFrame reveals that *ACTB* consistently exhibits higher gene expression across all cell types
+# A glance at the **pandas.DataFrame** reveals that *ACTB* consistently exhibits higher gene expression across all cell types
 # compared to the other genes. In contrast, *PRDM1* shows very low expression overall.
 #
 # However, analysing large sets of numerical data can be challenging. Visualizing the data in a graphical format makes the
@@ -188,7 +188,7 @@ similar_features
 # **similar_features.index** to extract the gene names returned by ``similar_features``, and pass them as the ``feature``
 # parameter to the ``average`` method.
 #
-# You can either use ``print`` function to directly display the resulting *pandas.DataFrame* or, as shown in the example
+# You can either use ``print`` function to directly display the resulting **pandas.DataFrame** or, as shown in the example
 # below, use Seaborn's ``heatmap`` method to present a more intuitive graphical representation:
 
 # Get average gene expression
@@ -216,9 +216,9 @@ plt.show()
 # First, use the ``markers`` method to obtain the top 5 marker genes for neutrophils in the human lung:
 
 markers_in_human_lung_neu = api.markers(
-    organism='h_sapiens', 
-    organ='lung', 
-    cell_type='neutrophil', 
+    organism='h_sapiens',
+    organ='lung',
+    cell_type='neutrophil',
     number=5
 )
 
@@ -260,7 +260,7 @@ plt.show()
 avg_gene_expr_markers_log = np.log(avg_gene_expr_markers + 1)
 
 sns.heatmap(
-    avg_gene_expr_markers_log, 
+    avg_gene_expr_markers_log,
     cbar_kws={'label': 'Expression Level'}
 )
 plt.tight_layout()
