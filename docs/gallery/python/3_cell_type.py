@@ -20,10 +20,10 @@ applicable.
 # %%
 # Contents
 # ^^^^^^^^
-#     - Retrieve cell type distributions across organs.
-#     - Identify organs where a specific cell type occurs.
-#     - Find marker genes for a cell type in a specific organ.
-#     - Visualize cell type abundance and relationships.
+#   - `Retrieve cell type distributions across organs. <retrieve-distributions_>`__
+#   - `Identify organs where a specific cell type occurs. <identify-organs_>`__
+#   - `Find marker genes for a cell type in a specific organ. <markers_>`__
+#   - `Visualize cell type abundance and relationships. <visualization_>`__
 
 
 # %%
@@ -59,6 +59,7 @@ print("Available organisms:")
 print(organisms)
 
 # %%
+# .. _retrieve-distributions:
 # Retrieve cell type distribution across organs
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # Now, let's use the ``celltypexorgan`` method to retrieve the distribution of cell types in the human cell atlas.
@@ -87,30 +88,11 @@ print(human_celltypes)
 # indicating they were not detected.
 
 # %%
+# .. _identify-organs:
 # Visualizing the data
 # ^^^^^^^^^^^^^^^^^^^^
 # Analyzing large datasets can feel challenging when just looking at numbers in a **pandas.DataFrame**, so let's take a visual
-# approach. Since macrophages are abundant in the lung (12,160 cells), a bar chart can help reveal their
-# abundance across other tissues and highlight where else they may be highly represented, as shown in the code below:
-
-# Filter for macrophages
-macrophage_dist = human_celltypes.loc["macrophage"]
-
-# Plot the distribution as a bar chart
-macrophage_dist.plot(kind="bar")
-plt.title("macrophage distribution across human organs")
-plt.xlabel("organ")
-plt.ylabel("number of sampled cells")
-plt.tight_layout()
-plt.show()
-
-# %%
-# The bar chart shows macrophage abundance across human organs, with the x-axis representing different organs and the
-# y-axis showing the number of sampled cells. The lung stands out with 12,160 macrophages - much higher than the bladder,
-# fat, and muscle, which also show notable counts. In contrast, organs like the eye, heart, and marrow have far fewer
-# macrophages.
-#
-# However, absolute counts don't always reflect true biological trends. Try the following code to see the percentage
+# approach. Since absolute counts don't always reflect true biological trends, try the following code to see the percentage
 # of macrophages in each organ:
 
 # Get total cells per organ (column sum)
@@ -155,6 +137,7 @@ plt.show()
 # common, with counts below 500 cells.
 
 # %%
+# .. _markers:
 # Identify marker genes for lung macrophages
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # Building on the lung's cell type abundance, you can now explore what makes lung macrophages unique by identifying their
@@ -196,6 +179,7 @@ human_lung_macrophage_markers_exp
 # (0.129112).
 
 # %%
+# .. _visualization:
 # For a clearer view of these expression patterns, visualize the data with a heatmap using the code below. This will
 # highlight how macrophages dominate expression levels across the marker genes:
 
