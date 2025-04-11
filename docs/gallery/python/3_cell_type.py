@@ -4,11 +4,6 @@
 Exploring cell types
 ====================
 
-Investigating cell atlases often involves exploring gene expression patterns across different cell types and organs.
-This tutorial guides you through using the `atlasapprox <https://atlasapprox.readthedocs.io/en/latest/index.html>`_ API
-to explore gene expression data effectively. You will gain a general idea of how to query average expression, discover
-patterns among similar genes, identify marker genes, and visualize the data.
-
 Understanding the distribution of a cell type, its marker genes, and its relationships with other cell types is
 essential in single-cell analysis. The `atlasapprox <https://atlasapprox.readthedocs.io/en/latest/index.html>`_ API
 provides access to cell atlas data across 30 species, including humans, mice, fish, plants, and worms.

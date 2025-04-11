@@ -155,3 +155,7 @@ atlasapprox.Rcheck/
 # sphinx gallery src
 docs/source/_build
 docs/source/python/gallery
+
+# OS system file
+.DS_Store
+docs/source/.DS_Store
