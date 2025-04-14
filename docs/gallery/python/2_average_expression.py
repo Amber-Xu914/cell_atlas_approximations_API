@@ -257,12 +257,15 @@ plt.show()
 # Understand the output
 # ---------------------
 # This heatmap displays the gene expression levels of five neutrophil marker genes across all cell types.
-#
+
+# %%
+# Log transformation
+# ^^^^^^^^^^^^^^^^^^
 # A significant portion of the heatmap appears black, indicating that these genes have very low expression levels
 # (between 0-20 cptt) in most cell types. Due to the wide range of gene expression values, the current scale is too
-# broad to effectively show differences within the 0 - 20 range. In this case, applying a logarithmic transformation helps
-# compress the range, making smaller expression differences more visible while minimizing the impact of extremely high
-# values. You can use the following code:
+# broad to effectively show differences within the 0 - 20 range. In this case, applying a logarithmic transformation
+# helps compress the range, making smaller expression differences more visible while minimizing the impact of extremely
+# high values. You can use the following code:
 
 # Call the log method in NumPy to get all numbers logged
 # Add 1 to each value to avoid division by zero
