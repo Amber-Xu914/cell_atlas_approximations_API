@@ -15,7 +15,7 @@ Below is a gallery of examples for the atlasapprox APIs in Python.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="This example shows a quick and easy example of how to use atlasapprox to get and plot the expression of some gees in a  specific organ of a specific organism.">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows a quick and easy example of how to use atlasapprox to get and plot the expression of some gees in a specific organ of a specific organism.">
 
 .. only:: html
 

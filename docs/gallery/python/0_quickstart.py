@@ -2,7 +2,7 @@
 Quickstart
 ==========
 
-This example shows a quick and easy example of how to use atlasapprox to get and plot the expression of some gees in a 
+This example shows a quick and easy example of how to use atlasapprox to get and plot the expression of some gees in a
 specific organ of a specific organism.
 """
 
@@ -25,4 +25,4 @@ fig.tight_layout()
 # Page source
 # -----------
 
-# sphinx_gallery_thumbnail_path = '_static/quick_start.png'
+# sphinx_gallery_thumbnail_path = '_static/quickstart.png'
