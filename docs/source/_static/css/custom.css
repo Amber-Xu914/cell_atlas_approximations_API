@@ -192,3 +192,13 @@ a.reference.external::after {
 div.sphx-glr-download-link-note {
     display: none;
 }
+
+h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+}

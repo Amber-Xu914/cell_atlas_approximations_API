@@ -28,22 +28,19 @@ to get started with installation, basic usage, and example queries.
 
 # %%
 # Installation
-# ------------
-#
+# ^^^^^^^^^^^^
 # Use pip to install the *atlasapprox* Python package:
 #
 # ``pip install atlasapprox``
 
 # %%
-# Initialize the API
-# ------------------
 # Each time you work with the API, start by importing the *atlasapprox* Python package and creating an API object.
 
 import atlasapprox
 api = atlasapprox.API()
 
 # %%
-# Easy Start: How to Get Average Gene Expression
+# Easy start: how to get average gene expression
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # The ``average`` function allows you to retrieve gene expression levels for selected genes in a specific organ of an
 # organism.
@@ -53,9 +50,9 @@ api = atlasapprox.API()
 
 # Call API function with params
 avg_gene_expr_lung = api.average(
-    organism = "h_sapiens", 
-    organ = "lung", 
-    features = ["COL13A1", "COL14A1", "TGFBI", "PDGFRA", "GZMA"], 
+    organism = "h_sapiens",
+    organ = "lung",
+    features = ["COL13A1", "COL14A1", "TGFBI", "PDGFRA", "GZMA"],
     measurement_type = "gene_expression"
 )
 
@@ -64,7 +61,7 @@ avg_gene_expr_lung
 
 # %%
 # Understand the output
-# ---------------------
+# ^^^^^^^^^^^^^^^^^^^^^
 # This method returns a **pandas.DataFrame** where:
 #
 # - Each row represents a gene.
@@ -73,7 +70,7 @@ avg_gene_expr_lung
 
 # %%
 # Conclusion
-# ^^^^^^^^^^
+# ----------
 # This tutorial provided a quick-start guide to using the *atlasapprox* Python package.
 # For more detailed information, refer to the official
 # `documentation <https://atlasapprox.readthedocs.io/en/latest/python/index.html>`_.

@@ -16,34 +16,30 @@ applicable.
 # Contents
 # ^^^^^^^^
 #   - `Retrieve cell type distributions across organs. <retrieve-distributions_>`__
-#   - `Identify organs where a specific cell type occurs. <identify-organs_>`__
+#   - `Zooming into a specific organ. <specific-organ_>`__
 #   - `Find marker genes for a cell type in a specific organ. <markers_>`__
-#   - `Visualize cell type abundance and relationships. <visualization_>`__
 
 # %%
-# Initialize the API
-# ------------------
-# To begin, import the *atlasapprox* Python package and create an API object:
-
+# Getting started
+# ^^^^^^^^^^^^^^^
+# First, use pip to install the `atlasapprox` package along with the libraries needed for data visualization in this
+# tutorial. Run the following command in your terminal:
+#
+#     ``pip install atlasapprox matplotlib seaborn``
+#
+# Next, import them:
+#
 import atlasapprox
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# %%
+# Now, instantiate the ``API`` project:
 
 api = atlasapprox.API()
 
 # %%
 # For complete setup instructions, check out :ref:`beginner-guide`.
-
-# %%
-# Required packages
-# -----------------
-# To follow along with the data visualization in this tutorial, first install the following packages using `pip`:
-#
-# ``pip install matplotlib seaborn pandas``
-#
-# Then import them by running the following command in your terminal or Jupyter notebook:
-
-import matplotlib.pyplot as plt
-import seaborn as sns
-import pandas as pd
 
 # %%
 # Explore available organisms
@@ -81,67 +77,28 @@ human_celltypes
 # - Each column represents an organ.
 # - The values are counts of sampled cells for that cell type in the organ. A value of 0 means the cell type was not detected.
 #
-# For example, in lung tissue, there are 1,307 T cells and 12,160 macrophages, while hepatocytes have a count of 0,
-# indicating they were not detected.
+# For example, in the lung, there are 1,307 T cells and 12,160 macrophages, while hepatocytes have a count of 0, indicating they were not detected. 
+# At a glance, some cell type such as macrophages, T cell and B cells are found across multiple tissue, while others like schwann and thymocytes is more rare. However, looking at these numbers alone can make it hard to spot trends across many organs and cell types, especially in a large dataset like this one.
 
 # %%
-# .. _identify-organs:
 # Visualizing the data
 # ^^^^^^^^^^^^^^^^^^^^
-# Analyzing large datasets can feel challenging when just looking at numbers in a **pandas.DataFrame**, so let's take a
-# visual approach. Since absolute counts don't always reflect true biological trends, try the following code to see the
-# percentage of macrophages in each organ:
+# To better understand the data, a visual approach helps reveal patterns that numbers alone can obscure.
+# For example, raw cell counts can be unrepresentative because organs vary in the total number of sampled cells—an organ
+# with more sampled cells may appear to have more of a specific cell type, even if that cell type is relatively rare—so
+# using proportions normalizes the data to better reflect the actual distribution of a cell type within each organ.
+#
+# Let's start by visualizing the proportion of macrophages across organs, since they are often abundant and play a key
+# role in immune responses across tissues:
 
-# Get total cells per organ (column sum)
-total_cells_per_organ = human_celltypes.sum(axis=0)
-
-# Get target cell type counts per organ
-target_counts = human_celltypes.loc["macrophage"]
-
-# Compute proportion (%) of that cell type in each organ
-percentage = (target_counts / total_cells_per_organ) * 100
+# Compute proportion of macrophages in each organ
+proportions = (human_celltypes.loc["macrophage"] / human_celltypes.sum(axis=0)) * 100
 
 # Plot bar chart
-percentage.sort_values(ascending=False).plot(kind='bar')
-plt.xlabel('Organ')
-plt.ylabel('Abundance (%)')
-plt.title('Proportion of macrophage cells in each organ')
-
-# Display bar chart
-plt.tight_layout()
-plt.show()
-
-# %%
-# It is also possible to compare two cell types in a single bar chart.
-#
-# T cells and macrophages are both immune cells, but their distribution varies significantly between organs. Organs such
-# as the gut, lymph nodes, and skin typically have a higher proportion of T cells, whereas the lung and liver are more enriched with macrophages.
-
-# Get total cells per organ (column sum)
-total_cells_per_organ = human_celltypes.sum(axis=0)
-
-# Get target cell type counts per organ
-target_counts_1 = human_celltypes.loc["macrophage"]
-target_counts_2 = human_celltypes.loc["T"]
-
-# Compute proportions (%)
-percentage_1 = (target_counts_1 / total_cells_per_organ) * 100
-percentage_2 = (target_counts_2 / total_cells_per_organ) * 100
-
-# Combine into a DataFrame
-percentage_df = pd.DataFrame({
-    'macrophage': percentage_1,
-    'T': percentage_2
-})
-
-# Sort by macrophage proportion (or any order you prefer)
-percentage_df = percentage_df.sort_values(by='macrophage', ascending=False)
-
-# Plot side-by-side bars
-percentage_df.plot(kind='bar')
-plt.xlabel('Organ')
-plt.ylabel('Abundance (%)')
-plt.title('Proportion of macrophage and T cells in each organ')
+proportions.sort_values(ascending=False).plot(kind='bar')
+plt.xlabel('Organs')
+plt.ylabel('(%)')
+plt.title('Proportion of macrophage cells across organs')
 
 # Display bar chart
 plt.tight_layout()
@@ -149,41 +106,62 @@ plt.show()
 
 # %%
 # This bar chart shows that macrophages are highly abundant in the lung, making up nearly 35% of its sampled cells.
+#
+# To dive deeper, we can zoom into the proportions of specific cell types across organs and even compare multiple cell
+# types to uncover differences in their distributions. Let's examine macrophages alongside T cells—both are immune
+# cells, but their roles and abundances vary across the body.
 
-# %%
-# Focus on a specific organ: lung
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-# Now, let's explore which other cell types are abundant in this organ using a bar chart, as shown in the code below:
+# Select cell types to compare
+cell_types = ["T", "macrophage"]
 
-# Get all cell types in the lung
-lung_abundance = human_celltypes["lung"]
-lung_abundance_nonzero = lung_abundance[lung_abundance > 0]
+# Calculate percentage of each cell type in each organ
+proportions = (human_celltypes.loc[cell_types] / human_celltypes.sum(axis=0)) * 100
 
-# Plot the abundance as a vertical bar chart
-lung_abundance_nonzero.plot(kind="bar")
-plt.title(f"Cell type distribution in human lung")
-plt.xlabel("cell type")
-plt.ylabel("number of sampled cells")
+# Plot bars for each cell type
+proportions.T.plot(kind="bar")
+plt.xlabel("Organs")
+plt.ylabel("(%)")
+plt.title("Proportion of cell types across organs")
 
-# Display bar chart
 plt.tight_layout()
 plt.show()
 
 # %%
-# The bar chart displays the abundance of various cell types in the human lung , with the x-axis showing different
-# cell types and the y-axis indicating the number of sampled cells.
+# The plot shows that macrophages and T cells are distributed differently across organs. For example, the lung and liver
+# have a higher percentage of macrophages, while the gut, lymph nodes, and skin have a higher percentage of T cells.
+# This shows how you can use the API to explore cell type distributions, and the code can be applied to any other
+# available cell type or species, like B cells in mice, by simply changing the parameters.
+
+# %%
+# .. _specific-organ:
+# Zooming into a specific organ
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# After exploring cell type distributions across all organs, you might want to dive deeper into a specific organ to see
+# its unique cell type composition.
 #
-# Looking at the bar chart, macrophages are the most abundant, with 12,160 cells, followed by AT2 cells at around 8,000.
-# In contrast, cell types such as NK cells, monocytes, and ciliated cells are much less common, each with fewer than 500
-# cells.
+# In this example, we focus on the lung to identify the most abundant cell types besides macrophages. To improve
+# clarity, we only include cell types with non-zero proportions to simplify the visualization.
+
+# Plot lung cell type proportions
+lung_pct = (human_celltypes["lung"] / human_celltypes["lung"].sum() * 100).sort_values(ascending=False)
+lung_pct[lung_pct > 0].plot(kind="bar")
+
+plt.title("Cell type proportions in lung")
+plt.ylabel("Percentage (%)")
+plt.tight_layout()
+plt.show()
+
+# %%
+# As seen in the chart, macrophages make up the largest proportion (~34%), followed by AT2 cells (~25%) and monocytes (~7%).
+# In contrast, rare cell types such as NK cells, lymphatic, and ionocyte each represent less than 2% of lung cells.
 
 # %%
 # .. _markers:
 # Identify marker genes for lung macrophages
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-# Building on the cell type abundance in the lung, you can now explore what makes lung macrophages unique by
-# identifying their marker genes using the ``markers`` function. The code below retrieves the top 10 marker genes
-# specific to lung macrophages:
+# Now that you've seen the cell type composition in the lung, you can use the API to find marker genes for a specific
+# cell type. Here, we'll look at lung macrophages as an example, starting with the ``markers`` function to retrieve the
+# top 10 marker genes:
 
 human_lung_macrophage_markers = api.markers(
     organism="h_sapiens",
@@ -196,13 +174,8 @@ human_lung_macrophage_markers = api.markers(
 human_lung_macrophage_markers
 
 # %%
-# Next, let's analyze their expression across cell types. To view the expression levels of these marker genes across
-# cell types, use the ``average`` method. This helps identify characteristic genes for specific cell populations:
-
-# Next, let’s examine how these marker genes are expressed across different cell types. You can use the ``average``
-# method to view their expression levels, which helps identify genes that are characteristic of specific cell
-# populations:
-
+# To see how these marker genes are expressed across different cell types in the lung, you can use the ``average``
+# method:
 
 human_lung_macrophage_markers_exp = api.average(
     organism="h_sapiens",
@@ -220,30 +193,23 @@ human_lung_macrophage_markers_exp
 #
 # - Each row represents a gene.
 # - Each column corresponds to a cell type.
-# - The values show the average gene expression.
+# - The values show the average gene expression in counts per ten thousand (cptt).
 #
-# The table reveals expression in counts per ten thousand (cpt). Macrophages show the highest levels across all
-# marker genes — or example, *PPARG* is expressed at 2.712 cpt, far above plasmacytoid cells (0.000823) and neutrophils
-# (0.129112).
+# The table shows how much higher the expression of these marker genes is in macrophages compared to other cell types in
+# the lung. For example, the gene *PPARG* has an expression of 2.712 cpt in macrophages, while it's only 0.000823 in
+# plasmacytoid cells and 0.129112 in neutrophils.
 
 # %%
 # .. _visualization:
-# For a clearer view of these expression patterns, you can try to visualize the data with a heatmap using the code below.
-# This will make the expression levels across the macrophage marker genes more obvious:
-
-# To better visualize these expression patterns, you can use a heatmap to display the data. The code below will show you
-# the expression levels of the macrophage marker genes across different cell types.
-
+# You can visualize these expression patterns with a heatmap to make the differences clearer, as shown in the code
+# below:
 
 # Create the heatmap
-heatmap = sns.heatmap(
-    human_lung_macrophage_markers_exp,
-    cbar_kws={"label": "Gene Expression Level"}
-)
+heatmap = sns.heatmap(human_lung_macrophage_markers_exp)
 
 # Set labels
-plt.title("Average expression of marker genes in human macrophage")
-plt.xlabel("Organs")
+plt.title("Average expression of marker genes in lung macrophage")
+plt.xlabel("Cell types")
 plt.ylabel("Genes")
 cbar = heatmap.collections[0].colorbar
 cbar.set_label("Gene Expression Level (cptt)")
@@ -253,12 +219,13 @@ plt.tight_layout()
 plt.show()
 
 # %%
-# The heatmap shows the expression of 10 marker genes for macrophages across various cell types in the human lung,
-# with the y-axis listing genes and the x-axis showing cell types. The color intensity reflects gene expression
-# levels in counts per ten thousand (cptt), where bright shades indicate higher expression.
+# The heatmap displays the expression of the 10 marker genes for macrophages across various cell types in the human lung.
+# The y-axis lists the genes, and the x-axis shows the cell types.
+# The color intensity reflects gene expression levels in counts per ten thousand (cpt), with brighter shades indicating
+# higher expression.
 #
-# Macrophages exhibit the strong expression for some genes, for example *MARCO* at 12.84179 cptt, while other cell types,
-# such as plasmacytoid cells and neutrophils, show much lower levels.
+# For example, macrophages show strong expression for genes like *MARCO* at 12.84179 cpt, while other cell types, such
+# as plasmacytoid cells and neutrophils, have much lower levels.
 
 # %%
 # Conclusion
