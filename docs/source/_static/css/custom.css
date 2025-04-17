@@ -18,6 +18,7 @@ table {
     overflow-x: auto !important; /* Enable horizontal scrolling */
     overflow-y: auto !important; /* Enable vertical scrolling */
     display: block !important; /* Ensure table behaves as a block */
+    white-space: nowrap;
 }
 
 table th, table td {
@@ -25,6 +26,9 @@ table th, table td {
     padding: 6px; /* Unified padding */
     text-align: left;
     font-size: 14px; /* Ensures text remains readable */
+    text-overflow: initial !important;
+    overflow: visible !important;
+    white-space: nowrap !important;
 }
 
 /* Improve code block readability */
@@ -54,6 +58,7 @@ table th, table td {
     padding: 6px; /* Unified padding */
     text-align: left;
     font-size: 14px; /* Ensures text remains readable */
+    text-overflow: initial !important;
 }
 
 /* Style table headers */

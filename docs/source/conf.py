@@ -45,6 +45,7 @@ sphinx_gallery_conf = {
     ],
     'within_subsection_order': file_name_sort_key,
     "image_scrapers": ('matplotlib'),
+    "remove_config_comments": True, # hides config-style comments like thumbnail_path
 }
 
 # -- Options for HTML output -------------------------------------------------

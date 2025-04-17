@@ -21,8 +21,4 @@ fig, ax = plt.subplots(figsize=(7, 4))
 sns.heatmap(expression, ax=ax)
 fig.tight_layout()
 
-# %%
-# Page source
-# -----------
-
 # sphinx_gallery_thumbnail_path = '_static/quickstart.png'

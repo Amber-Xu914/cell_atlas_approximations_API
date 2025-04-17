@@ -34,7 +34,8 @@ to get started with installation, basic usage, and example queries.
 # ``pip install atlasapprox``
 
 # %%
-# Each time you work with the API, start by importing the *atlasapprox* Python package and creating an API object.
+# Each time you work with the API, start by importing the *atlasapprox* Python package and instantiate the ``API``
+# project:
 
 import atlasapprox
 api = atlasapprox.API()
@@ -61,7 +62,7 @@ avg_gene_expr_lung
 
 # %%
 # Understand the output
-# ^^^^^^^^^^^^^^^^^^^^^
+# ---------------------
 # This method returns a **pandas.DataFrame** where:
 #
 # - Each row represents a gene.
@@ -70,13 +71,9 @@ avg_gene_expr_lung
 
 # %%
 # Conclusion
-# ----------
-# This tutorial provided a quick-start guide to using the *atlasapprox* Python package.
-# For more detailed information, refer to the official
+# ^^^^^^^^^^
+# This tutorial provided a general beginner guide to using the *atlasapprox* Python package. For more detailed
+# information, refer to the official
 # `documentation <https://atlasapprox.readthedocs.io/en/latest/python/index.html>`_.
-
-# %%
-# Page source
-# -----------
 
 # sphinx_gallery_thumbnail_path = '_static/beginner_guide.png'

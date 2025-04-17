@@ -15,20 +15,20 @@ applicable.
 # %%
 # Contents
 # ^^^^^^^^
-#   - `Retrieve cell type distributions across organs. <retrieve-distributions_>`__
-#   - `Zooming into a specific organ. <specific-organ_>`__
-#   - `Find marker genes for a cell type in a specific organ. <markers_>`__
+#   - `Retrieve cell type distribution across organs <retrieve-distributions_>`__
+#   - `Zooming into a specific organ <specific-organ_>`__
+#   - `Identify marker genes a cell type in a specific organ <markers_>`__
 
 # %%
-# Getting started
-# ^^^^^^^^^^^^^^^
+# Install packages and set up the API
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # First, use pip to install the `atlasapprox` package along with the libraries needed for data visualization in this
 # tutorial. Run the following command in your terminal:
 #
 #     ``pip install atlasapprox matplotlib seaborn``
 #
 # Next, import them:
-#
+
 import atlasapprox
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -75,10 +75,14 @@ human_celltypes
 #
 # - Each row represents a unique cell type.
 # - Each column represents an organ.
-# - The values are counts of sampled cells for that cell type in the organ. A value of 0 means the cell type was not detected.
+# - The values are counts of sampled cells for that cell type in the organ. A value of 0 means the cell type was not
+# detected.
 #
-# For example, in the lung, there are 1,307 T cells and 12,160 macrophages, while hepatocytes have a count of 0, indicating they were not detected. 
-# At a glance, some cell type such as macrophages, T cell and B cells are found across multiple tissue, while others like schwann and thymocytes is more rare. However, looking at these numbers alone can make it hard to spot trends across many organs and cell types, especially in a large dataset like this one.
+# For example, in the lung, there are 1,307 T cells and 12,160 macrophages, while hepatocytes have a count of 0,
+# indicating they were not detected.
+# At a glance, some cell type such as macrophages, T cell and B cells are found across multiple tissue, while others
+# like schwann and thymocytes are more rare. However, looking at these numbers alone can make it hard to spot trends
+# across many organs and cell types, especially in a large dataset like this one.
 
 # %%
 # Visualizing the data
@@ -102,7 +106,6 @@ plt.title('Proportion of macrophage cells across organs')
 
 # Display bar chart
 plt.tight_layout()
-plt.show()
 
 # %%
 # This bar chart shows that macrophages are highly abundant in the lung, making up nearly 35% of its sampled cells.
@@ -124,11 +127,11 @@ plt.ylabel("(%)")
 plt.title("Proportion of cell types across organs")
 
 plt.tight_layout()
-plt.show()
 
 # %%
 # The plot shows that macrophages and T cells are distributed differently across organs. For example, the lung and liver
 # have a higher percentage of macrophages, while the gut, lymph nodes, and skin have a higher percentage of T cells.
+#
 # This shows how you can use the API to explore cell type distributions, and the code can be applied to any other
 # available cell type or species, like B cells in mice, by simply changing the parameters.
 
@@ -149,7 +152,6 @@ lung_pct[lung_pct > 0].plot(kind="bar")
 plt.title("Cell type proportions in lung")
 plt.ylabel("Percentage (%)")
 plt.tight_layout()
-plt.show()
 
 # %%
 # As seen in the chart, macrophages make up the largest proportion (~34%), followed by AT2 cells (~25%) and monocytes (~7%).
@@ -157,8 +159,8 @@ plt.show()
 
 # %%
 # .. _markers:
-# Identify marker genes for lung macrophages
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Identify marker genes a cell type in a specific organ
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # Now that you've seen the cell type composition in the lung, you can use the API to find marker genes for a specific
 # cell type. Here, we'll look at lung macrophages as an example, starting with the ``markers`` function to retrieve the
 # top 10 marker genes:
@@ -200,12 +202,12 @@ human_lung_macrophage_markers_exp
 # plasmacytoid cells and 0.129112 in neutrophils.
 
 # %%
-# .. _visualization:
 # You can visualize these expression patterns with a heatmap to make the differences clearer, as shown in the code
 # below:
 
 # Create the heatmap
-heatmap = sns.heatmap(human_lung_macrophage_markers_exp)
+fig, ax = plt.subplots(figsize=(7, 5))
+heatmap = sns.heatmap(human_lung_macrophage_markers_exp, ax=ax)
 
 # Set labels
 plt.title("Average expression of marker genes in lung macrophage")
@@ -214,9 +216,7 @@ plt.ylabel("Genes")
 cbar = heatmap.collections[0].colorbar
 cbar.set_label("Gene Expression Level (cptt)")
 
-# Display heatmap
-plt.tight_layout()
-plt.show()
+fig.tight_layout()
 
 # %%
 # The heatmap displays the expression of the 10 marker genes for macrophages across various cell types in the human lung.
@@ -237,9 +237,5 @@ plt.show()
 #
 # Thank you for using the *atlasapprox* API. For more detailed information, please refer to the
 # `official documentation <https://atlasapprox.readthedocs.io/en/latest/python/index.html>`_.
-
-# %%
-# Page source
-# -----------
 
 # sphinx_gallery_thumbnail_path = '_static/cell_type.png'

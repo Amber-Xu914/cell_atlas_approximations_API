@@ -13,17 +13,28 @@ patterns of similar genes, identify marker genes, and visualize the data.
 # %%
 # Contents
 # ^^^^^^^^
-#   - Querying average expression data for a single organ
-#   - Querying expression data for multiple organs
-#   - Identifying expression patterns of similar genes
-#   - Querying expression data for marker genes
+#   - `Querying average gene expression for single organ <average-expression_>`__
+#   - `Querying average gene expression for multiple organs <multi-organs_>`__
+#   - `Get average gene expression for similar features <similar-features_>`__
+#   - `Find marker genes for a specific cell type in organ <marker-genes_>`__
 
 # %%
-# Initialize the API
-# ------------------
-# To begin, import the *atlasapprox* Python package and create an API object:
+# Install packages and set up the API
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# First, use pip to install the `atlasapprox` package along with the libraries needed for data visualization in this
+# tutorial. Run the following command in your terminal:
+#
+#     ``pip install atlasapprox matplotlib seaborn numpy``
+#
+# Next, import them:
 
 import atlasapprox
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+
+# %%
+# Now, instantiate the ``API`` project:
 
 api = atlasapprox.API()
 
@@ -31,22 +42,20 @@ api = atlasapprox.API()
 # For complete setup instructions, check out :ref:`beginner-guide`.
 
 # %%
-# Required packages
-# -----------------
-# To follow along with the data visualization in this tutorial, first install the following packages using pip if you
-# haven't already:
-#
-# ``pip install matplotlib seaborn numpy``
-#
-# Then import them by running the following command in your terminal or Jupyter notebook:
+# Explore available organisms
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Let's start by retrieving all available organisms from the API to see which species you can work with:
 
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np
+# Get available organisms
+organisms = api.organisms(measurement_type="gene_expression")
+
+print("Available organisms:")
+print(organisms)
 
 # %%
-# Querying average gene expression data
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# .. _average-expression:
+# Querying average gene expression for single organ
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # The ``average`` method can be used to retrieve the average gene expression of selected genes across cell types within
 # a specific organ of a species.
 #
@@ -86,7 +95,8 @@ avg_gene_expr_lung
 # powerful tools for creating heatmaps. Here is how to create one using Seaborn's ``heatmap`` method with custom labels:
 
 # fill in heatmap contents
-heatmap = sns.heatmap(avg_gene_expr_lung)
+fig, ax = plt.subplots(figsize=(7, 5))
+heatmap = sns.heatmap(avg_gene_expr_lung, ax=ax)
 
 # Customize labels
 plt.title('Average gene expression across cell types in the human lung')
@@ -96,8 +106,7 @@ cbar = heatmap.collections[0].colorbar
 cbar.set_label("Gene Expression Level (cptt)")
 
 # Display heatmap
-plt.tight_layout()
-plt.show()
+fig.tight_layout()
 
 # %%
 # The color gradient makes it much easier to compare expression levels across different cell types than by inspecting
@@ -105,6 +114,7 @@ plt.show()
 # cell types, while *PRDM1* has very low expression overall.
 
 # %%
+# .. _multi-organs:
 # Querying average gene expression for multiple organs
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # The following example demonstrates the average gene expression of four genes (same as above) across three human organs
@@ -124,8 +134,8 @@ for organ in organ_list:
         features=['PRDM1', 'PTPRC', 'ACTB', 'GAPDH'],
     )
 
-    plt.figure(figsize=(15, 6))
-    heatmap = sns.heatmap(avg_gene_expr)
+    fig, ax = plt.subplots(figsize=(7, 5))
+    heatmap = sns.heatmap(avg_gene_expr, ax=ax)
 
     # Customize labels
     plt.title(f'Average gene expression across cell types in the human {organ}')
@@ -134,9 +144,7 @@ for organ in organ_list:
     cbar = heatmap.collections[0].colorbar
     cbar.set_label("Gene Expression Level (cptt)")
 
-    # Display heatmap
-    plt.tight_layout()
-    plt.show()
+    fig.tight_layout()
 
 # %%
 # By comparing these three heatmaps, you can see that the housekeeping gene *ACTB* consistently shows high expression
@@ -183,6 +191,7 @@ similar_features
 #   - **log-euclidean**: Applies a logarithmic transformation to the average measurement (with a pseudo count of 0.001) before calculating the Euclidean distance, highlighting sparsely measured features.
 
 # %%
+# .. _similar-features:
 # Get average gene expression for similar features
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # You can then use the ``average`` method to retrieve the average gene expression of these similar genes. Use
@@ -202,9 +211,11 @@ avg_similar_features = api.average(
 )
 
 # Display the heatmap
-sns.heatmap(
+fig, ax = plt.subplots(figsize=(8, 6))
+heatmap = sns.heatmap(
     avg_similar_features,
-    cbar_kws={'label': 'Expression Level'}
+    cbar_kws={'label': 'Expression Level'},
+    ax=ax
 )
 
 # Customize labels
@@ -214,10 +225,10 @@ plt.ylabel("Genes")
 cbar = heatmap.collections[0].colorbar
 cbar.set_label("Gene Expression Level (cptt)")
 
-plt.tight_layout()
-plt.show()
+fig.tight_layout()
 
 # %%
+# .. _marker-genes:
 # Find marker genes for a specific cell type in organ
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # If you're unsure which genes to explore, marker genes can be a helpful starting point. The following example
@@ -239,19 +250,24 @@ markers_in_human_lung_neu
 # Next, use the ``average`` method to retrieve the average gene expression of these genes, then use Seaborn's
 # ``heatmap`` to visualize your data:
 
-# Getting average gene expression for marker genes
+# Getting average gene expression marker genes
 avg_gene_expr_markers = api.average(
     organism='h_sapiens',
     organ='lung',
     features=markers_in_human_lung_neu
 )
 
-sns.heatmap(
-    avg_gene_expr_markers,
-    cbar_kws={'label': 'Expression Level'}
-)
-plt.tight_layout()
-plt.show()
+fig, ax = plt.subplots(figsize=(8, 6))
+heatmap = sns.heatmap(avg_gene_expr_markers, ax=ax)
+
+# Set labels
+plt.title("Average expression of marker genes in lung neutrophil")
+plt.xlabel("Gene")
+plt.ylabel("Gene expression")
+cbar = heatmap.collections[0].colorbar
+cbar.set_label("Gene Expression Level (cptt)")
+
+fig.tight_layout()
 
 # %%
 # Understand the output
@@ -271,13 +287,17 @@ plt.show()
 # Add 1 to each value to avoid division by zero
 avg_gene_expr_markers_log = np.log(avg_gene_expr_markers + 1)
 
-sns.heatmap(
-    avg_gene_expr_markers_log,
-    cbar_kws={'label': 'Expression Level'}
-)
+fig, ax = plt.subplots(figsize=(8, 6))
+heatmap = sns.heatmap(avg_gene_expr_markers_log, ax=ax)
 
-plt.tight_layout()
-plt.show()
+# Set labels
+plt.title("Average expression of marker genes in lung macrophage")
+plt.xlabel("Cell types")
+plt.ylabel("Genes")
+cbar = heatmap.collections[0].colorbar
+cbar.set_label("Gene Expression Level (cptt)")
+
+fig.tight_layout()
 
 # %%
 # To avoid division by zero, this example uses avg_gene_expr_markers + 1 instead of avg_gene_expr_markers. This
@@ -296,9 +316,5 @@ plt.show()
 #
 # Thank you for using the *atlasapprox* API. For more detailed information, please refer to the
 # `official documentation <https://atlasapprox.readthedocs.io/en/latest/python/index.html>`_.
-
-# %%
-# Page source
-# -----------
 
 # sphinx_gallery_thumbnail_path = '_static/average_expression.png'
