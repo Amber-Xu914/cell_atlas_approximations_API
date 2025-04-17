@@ -29,6 +29,11 @@ templates_path = ["_templates"]
 exclude_patterns = []
 
 # -- Options for sphinx-gallery ----------------------------------------------
+
+# sort displayed file name
+def file_name_sort_key(example):
+    return os.path.basename(example)
+
 sphinx_gallery_conf = {
     "filename_pattern": "/.*.py",
     "examples_dirs": [
@@ -37,10 +42,18 @@ sphinx_gallery_conf = {
     "gallery_dirs": [
         "python/gallery",
     ],
+    'within_subsection_order': file_name_sort_key, # sort tabs by filename
+    "remove_config_comments": True, # hides config-style comments like thumbnail_path
 }
+
+# open external hyperlink in a new tab
+extensions += ["sphinx_new_tab_link"]
+new_tab_link_show_external_link_icon = True   # add an icon after each link
+new_tab_link_enable_referrer        = True   # keep the HTTP referrer
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
+html_css_files = ['css/custom.css'] # customize web display
