@@ -234,3 +234,5 @@ fig.tight_layout()
 #
 # Thank you for using the *atlasapprox* API. For more detailed information, please refer to the
 # `official documentation <https://atlasapprox.readthedocs.io/en/latest/python/index.html>`_.
+
+# sphinx_gallery_thumbnail_path = '_static/cell_type.png'

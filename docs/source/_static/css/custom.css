@@ -1,0 +1,166 @@
+/* ===== Code blocks ===== */
+pre {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 0.9em;
+    line-height: 1.5;
+    overflow-x: auto;   /* horizontal scroll for long lines */
+}
+
+/* ===== Tables ===== */
+table {
+    border-collapse: collapse !important;   /* merge borders */
+    max-width: 100% !important;
+    max-height: 400px !important;
+    display: block !important;  /* enable scroll bars */
+    overflow: auto !important;  /* x & y scrolling */
+    white-space: nowrap;    /* prevent cell wrap */
+}
+
+table th,
+table td {
+    border: 1px solid #ddd !important;
+    padding: 6px;
+    text-align: left;
+    font-size: 14px;
+    white-space: nowrap !important;
+}
+
+/* Header & zebra striping */
+table th {
+    background-color: #f1f1f1;
+    color: #333;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* ===== Script-output tables ===== */
+/* inherit general table rules plus these */
+.sphx-glr-script-out table {
+    border-collapse: collapse !important;
+    max-width: 100% !important;
+    max-height: 400px !important;
+    display: block !important;
+    overflow: auto !important;
+}
+
+.sphx-glr-script-out table th,
+.sphx-glr-script-out table td {
+    border: 1px solid #ddd !important;
+    padding: 6px !important;
+    text-align: left !important;
+    font-size: 14px !important;
+}
+
+.sphx-glr-script-out img {
+    max-width: 100% !important;
+    height: auto !important;    /* preserve aspect ratio */
+}
+
+/* Remove automatic height restriction */
+.sphx-glr-script-out {
+    overflow-x: auto !important;
+    max-height: none !important;
+}
+
+/* ===== Typography ===== */
+h1, h2, h3 {
+    color: #2c3e50;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+body {
+    line-height: 1.7;
+    color: #333;
+}
+
+/* ===== External links ===== */
+a.reference.external::after {
+    color: #2980B9;
+    font-size: 0.8em;
+}
+
+/* ===== Responsive docutils table wrapper ===== */
+.wy-table-responsive {
+    margin-bottom: 24px;
+    max-width: 100%;
+    overflow: visible;  /* allow internal scroll control */
+}
+
+/* ===== Sphinx-Gallery thumbnail grid ===== */
+.sphx-glr-thumbnails {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.sphx-glr-thumbcontainer {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 15px;
+    margin: 10px;
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+    line-height: 1.2em;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-align: center;
+    transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+}
+
+.sphx-glr-thumbcontainer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* image inside thumbnail */
+.sphx-glr-thumbcontainer img {
+    max-width: 100%;
+    max-height: 130px;
+    border-radius: 5px;
+    object-fit: contain;
+}
+
+/* thumbnail title */
+.sphx-glr-thumbnail-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+    line-height: 1.2em;
+    white-space: normal !important;
+    overflow: visible !important;
+}
+
+/* link behavior inside thumbnail */
+.sphx-glr-thumbcontainer a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Disable default tooltip popovers and download note */
+.sphx-glr-thumbcontainer[tooltip]:hover::before,
+.sphx-glr-thumbcontainer[tooltip]:hover::after,
+div.sphx-glr-download-link-note {
+    display: none;
+}
