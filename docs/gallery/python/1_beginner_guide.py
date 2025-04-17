@@ -41,8 +41,8 @@ import atlasapprox
 api = atlasapprox.API()
 
 # %%
-# Easy start: how to get average gene expression
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Easy start: getting average gene expression
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # The ``average`` function allows you to retrieve gene expression levels for selected genes in a specific organ of an
 # organism.
 #
@@ -61,8 +61,8 @@ avg_gene_expr_lung = api.average(
 avg_gene_expr_lung
 
 # %%
-# Understand the output
-# ---------------------
+# Understanding the output
+# ------------------------
 # This method returns a **pandas.DataFrame** where:
 #
 # - Each row represents a gene.

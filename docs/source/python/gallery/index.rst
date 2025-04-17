@@ -66,7 +66,7 @@ Below is a gallery of examples for the atlasapprox APIs in Python.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Understanding the distribution of a cell type, its marker genes, and its relationships with other cell types is essential in single-cell analysis. The atlasapprox API provides access to cell atlas data across 30 species, including humans, mice, fish, plants, and worms.">
+    <div class="sphx-glr-thumbcontainer" tooltip="Understanding cell type distribution across organs and identifying their marker genes are key skills in analyzing a species&#x27; cell atlas. This tutorial shows how to access this data more easily using the atlasapprox API, which provides cell atlas data for 30 species, including humans, mice, fish, plants, and worms, with practical human examples to guide you.">
 
 .. only:: html
 

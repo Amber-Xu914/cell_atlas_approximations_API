@@ -4,24 +4,22 @@
 Exploring cell types
 ====================
 
-Understanding the distribution of a cell type, its marker genes, and its relationships with other cell types is
-essential in single-cell analysis. The `atlasapprox <https://atlasapprox.readthedocs.io/en/latest/index.html>`_ API
-provides access to cell atlas data across 30 species, including humans, mice, fish, plants, and worms.
-
-This tutorial focuses on querying cell type related data across the available species, using human examples where
-applicable.
+Understanding cell type distribution across organs and identifying their marker genes are key skills in analyzing a
+species' cell atlas. This tutorial shows how to access this data more easily using the
+`atlasapprox <https://atlasapprox.readthedocs.io/en/latest/index.html>`_ API, which provides cell atlas data for 30
+species, including humans, mice, fish, plants, and worms, with practical human examples to guide you.
 """
 
 # %%
 # Contents
 # ^^^^^^^^
-#   - `Retrieve cell type distribution across organs <retrieve-distributions_>`__
+#   - `Retrieving cell type distribution across organs <retrieve-distributions_>`__
 #   - `Zooming into a specific organ <specific-organ_>`__
-#   - `Identify marker genes a cell type in a specific organ <markers_>`__
+#   - `Identifying marker genes for a cell type within an organ <markers_>`__
 
 # %%
-# Install packages and set up the API
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Installing packages and initializing the API
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # First, use pip to install the `atlasapprox` package along with the libraries needed for data visualization in this
 # tutorial. Run the following command in your terminal:
 #
@@ -42,8 +40,8 @@ api = atlasapprox.API()
 # For complete setup instructions, check out :ref:`beginner-guide`.
 
 # %%
-# Explore available organisms
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exploring available organisms
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # Let's start by retrieving all available organisms from the API to see which species you can work with:
 
 # Get available organisms
@@ -54,8 +52,8 @@ print(organisms)
 
 # %%
 # .. _retrieve-distributions:
-# Retrieve cell type distribution across organs
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Retrieving cell type distribution across organs
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # Now, let's use the ``celltypexorgan`` method to retrieve the distribution of cell types in the human cell atlas. This
 # will provide a clear overview of cell abundances and help identify which cell types are most prevalent across tissues.
 
@@ -69,8 +67,8 @@ human_celltypes = api.celltypexorgan(
 human_celltypes
 
 # %%
-# Understand the output
-# ---------------------
+# Understanding the output
+# ------------------------
 # This method returns a **pandas.DataFrame** where:
 #
 # - Each row represents a unique cell type.
@@ -138,7 +136,7 @@ plt.tight_layout()
 # %%
 # .. _specific-organ:
 # Zooming into a specific organ
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # After exploring cell type distributions across all organs, you might want to dive deeper into a specific organ to see
 # its unique cell type composition.
 #
@@ -159,8 +157,8 @@ plt.tight_layout()
 
 # %%
 # .. _markers:
-# Identify marker genes a cell type in a specific organ
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Identifying marker genes for a cell type within an organ
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # Now that you've seen the cell type composition in the lung, you can use the API to find marker genes for a specific
 # cell type. Here, we'll look at lung macrophages as an example, starting with the ``markers`` function to retrieve the
 # top 10 marker genes:
@@ -189,8 +187,8 @@ human_lung_macrophage_markers_exp = api.average(
 human_lung_macrophage_markers_exp
 
 # %%
-# Understand the output
-# ---------------------
+# Understanding the output
+# ------------------------
 # This method returns a **pandas.DataFrame** where:
 #
 # - Each row represents a gene.
@@ -211,10 +209,8 @@ heatmap = sns.heatmap(human_lung_macrophage_markers_exp, ax=ax)
 
 # Set labels
 plt.title("Average expression of marker genes in lung macrophage")
-plt.xlabel("Cell types")
-plt.ylabel("Genes")
-cbar = heatmap.collections[0].colorbar
-cbar.set_label("Gene Expression Level (cptt)")
+plt.xlabel("Cell type")
+plt.ylabel("Gene")
 
 fig.tight_layout()
 

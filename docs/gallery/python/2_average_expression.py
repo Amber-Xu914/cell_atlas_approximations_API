@@ -15,12 +15,12 @@ patterns of similar genes, identify marker genes, and visualize the data.
 # ^^^^^^^^
 #   - `Querying average gene expression for single organ <average-expression_>`__
 #   - `Querying average gene expression for multiple organs <multi-organs_>`__
-#   - `Get average gene expression for similar features <similar-features_>`__
-#   - `Find marker genes for a specific cell type in organ <marker-genes_>`__
+#   - `Exploring genes with similar expression patterns <similar-features_>`__
+#   - `Finding marker genes for a specific cell type in organ <marker-genes_>`__
 
 # %%
-# Install packages and set up the API
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Installing packages and initializing the API
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # First, use pip to install the `atlasapprox` package along with the libraries needed for data visualization in this
 # tutorial. Run the following command in your terminal:
 #
@@ -42,8 +42,8 @@ api = atlasapprox.API()
 # For complete setup instructions, check out :ref:`beginner-guide`.
 
 # %%
-# Explore available organisms
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exploring available organisms
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # Let's start by retrieving all available organisms from the API to see which species you can work with:
 
 # Get available organisms
@@ -73,8 +73,8 @@ avg_gene_expr_lung = api.average(
 avg_gene_expr_lung
 
 # %%
-# Understand the output
-# ---------------------
+# Understanding the output
+# ------------------------
 # This method returns a **pandas.DataFrame** where:
 #
 # - Each row represents a gene.
@@ -100,10 +100,8 @@ heatmap = sns.heatmap(avg_gene_expr_lung, ax=ax)
 
 # Customize labels
 plt.title('Average gene expression across cell types in the human lung')
-plt.xlabel('Cell types')
-plt.ylabel('Genes')
-cbar = heatmap.collections[0].colorbar
-cbar.set_label("Gene Expression Level (cptt)")
+plt.xlabel('Cell type')
+plt.ylabel('Gene')
 
 # Display heatmap
 fig.tight_layout()
@@ -139,10 +137,8 @@ for organ in organ_list:
 
     # Customize labels
     plt.title(f'Average gene expression across cell types in the human {organ}')
-    plt.xlabel("Cell types")
-    plt.ylabel("Genes")
-    cbar = heatmap.collections[0].colorbar
-    cbar.set_label("Gene Expression Level (cptt)")
+    plt.xlabel("Cell type")
+    plt.ylabel("Gene")
 
     fig.tight_layout()
 
@@ -152,6 +148,7 @@ for organ in organ_list:
 # across various organs or cell types due to their essential roles in basic cellular functions.
 
 # %%
+# .. _similar-features:
 # Exploring genes with similar expression patterns
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # Take *ACTB* as an example — you might be interested in finding genes with similar expression patterns. The example
@@ -170,8 +167,8 @@ similar_features = api.similar_features(
 similar_features
 
 # %%
-# Understand the output
-# ---------------------
+# Understanding the output
+# ------------------------
 # ``similar_features`` returns a **pandas.Series** where the index contains gene names, and the corresponding data
 # represent their distance to *ACTB*.
 #
@@ -191,9 +188,8 @@ similar_features
 #   - **log-euclidean**: Applies a logarithmic transformation to the average measurement (with a pseudo count of 0.001) before calculating the Euclidean distance, highlighting sparsely measured features.
 
 # %%
-# .. _similar-features:
-# Get average gene expression for similar features
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Getting average gene expression for similar features
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # You can then use the ``average`` method to retrieve the average gene expression of these similar genes. Use
 # **similar_features.index** to extract the gene names returned by ``similar_features``, and pass them as the ``feature``
 # parameter to the ``average`` method.
@@ -212,25 +208,19 @@ avg_similar_features = api.average(
 
 # Display the heatmap
 fig, ax = plt.subplots(figsize=(8, 6))
-heatmap = sns.heatmap(
-    avg_similar_features,
-    cbar_kws={'label': 'Expression Level'},
-    ax=ax
-)
+heatmap = sns.heatmap(avg_similar_features,ax=ax)
 
 # Customize labels
 plt.title(f'Average gene expression across ACTB and its similar features')
-plt.xlabel("Cell types")
-plt.ylabel("Genes")
-cbar = heatmap.collections[0].colorbar
-cbar.set_label("Gene Expression Level (cptt)")
+plt.xlabel("Cell type")
+plt.ylabel("Gene")
 
 fig.tight_layout()
 
 # %%
 # .. _marker-genes:
-# Find marker genes for a specific cell type in organ
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Finding marker genes for a specific cell type in organ
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # If you're unsure which genes to explore, marker genes can be a helpful starting point. The following example
 # demonstrates how to retrieve marker genes for your organ and cell type of interest, followed by querying the average
 # expression of these genes.
@@ -262,21 +252,19 @@ heatmap = sns.heatmap(avg_gene_expr_markers, ax=ax)
 
 # Set labels
 plt.title("Average expression of marker genes in lung neutrophil")
-plt.xlabel("Gene")
-plt.ylabel("Gene expression")
-cbar = heatmap.collections[0].colorbar
-cbar.set_label("Gene Expression Level (cptt)")
+plt.xlabel("Cell type")
+plt.ylabel("Gene")
 
 fig.tight_layout()
 
 # %%
-# Understand the output
-# ---------------------
+# Understanding the output
+# ------------------------
 # This heatmap displays the gene expression levels of five neutrophil marker genes across all cell types.
 
 # %%
-# Log transformation
-# ^^^^^^^^^^^^^^^^^^
+# Applying log transformation
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # A significant portion of the heatmap appears black, indicating that these genes have very low expression levels
 # (between 0-20 cptt) in most cell types. Due to the wide range of gene expression values, the current scale is too
 # broad to effectively show differences within the 0 - 20 range. In this case, applying a logarithmic transformation
@@ -292,10 +280,8 @@ heatmap = sns.heatmap(avg_gene_expr_markers_log, ax=ax)
 
 # Set labels
 plt.title("Average expression of marker genes in lung macrophage")
-plt.xlabel("Cell types")
-plt.ylabel("Genes")
-cbar = heatmap.collections[0].colorbar
-cbar.set_label("Gene Expression Level (cptt)")
+plt.xlabel("Cell type")
+plt.ylabel("Gene")
 
 fig.tight_layout()
 
