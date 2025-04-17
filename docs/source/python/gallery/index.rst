@@ -19,14 +19,65 @@ Below is a gallery of examples for the atlasapprox APIs in Python.
 
 .. only:: html
 
-  .. image:: /python/gallery/images/thumb/sphx_glr_quickstart_thumb.png
+  .. image:: /python/gallery/images/thumb/sphx_glr_0_quickstart_thumb.png
     :alt:
 
-  :ref:`sphx_glr_python_gallery_quickstart.py`
+  :ref:`sphx_glr_python_gallery_0_quickstart.py`
 
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">Quickstart</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The atlasapprox API provides access to approximated single-cell data across 30 species, including both animals and plants. You can explore data from species such as Homo sapiens (humans), Mus musculus (mice), Arabidopsis thaliana (thale cress), and Zea mays (corn). Follow this guide to get started with installation, basic usage, and example queries.">
+
+.. only:: html
+
+  .. image:: /python/gallery/images/thumb/sphx_glr_1_beginner_guide_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_python_gallery_1_beginner_guide.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Beginner guide</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Investigating cell atlases often involves exploring gene expression patterns across different cell types and organs. This tutorial guides you through using the atlasapprox API to explore gene expression data effectively. You will gain a general idea of how to query average expression, discover patterns of similar genes, identify marker genes, and visualize the data.">
+
+.. only:: html
+
+  .. image:: /python/gallery/images/thumb/sphx_glr_2_average_expression_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_python_gallery_2_average_expression.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exploring average gene expression</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Understanding cell type distribution across organs and identifying their marker genes are key skills in analyzing a species&#x27; cell atlas. This tutorial shows how to access this data more easily using the atlasapprox API, which provides cell atlas data for 30 species, including humans, mice, fish, plants, and worms, with practical human examples to guide you.">
+
+.. only:: html
+
+  .. image:: /python/gallery/images/thumb/sphx_glr_3_cell_type_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_python_gallery_3_cell_type.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Exploring cell types</div>
     </div>
 
 
@@ -40,7 +91,10 @@ Below is a gallery of examples for the atlasapprox APIs in Python.
 .. toctree::
    :hidden:
 
-   /python/gallery/quickstart
+   /python/gallery/0_quickstart
+   /python/gallery/1_beginner_guide
+   /python/gallery/2_average_expression
+   /python/gallery/3_cell_type
 
 
 .. only:: html
