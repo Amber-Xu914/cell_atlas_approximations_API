@@ -44,7 +44,6 @@ sphinx_gallery_conf = {
         "python/gallery",
     ],
     'within_subsection_order': file_name_sort_key,
-    "image_scrapers": ('matplotlib'),
     "remove_config_comments": True, # hides config-style comments like thumbnail_path
 }
 
@@ -54,3 +53,9 @@ sphinx_gallery_conf = {
 html_theme = "sphinx_rtd_theme"
 html_static_path = ['_static']
 html_css_files = ['css/custom.css']
+
+extensions += ["sphinx_new_tab_link"]
+
+# optional tweaks
+new_tab_link_show_external_link_icon = True   # add an icon after each link
+new_tab_link_enable_referrer        = True   # keep the HTTP referrer if you need it

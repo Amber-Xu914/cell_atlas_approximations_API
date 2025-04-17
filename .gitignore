@@ -151,7 +151,6 @@ atlasapprox.Rcheck/
 .Rhistory
 .RData
 
-
 # sphinx gallery src
 docs/source/_build
 docs/source/python/gallery

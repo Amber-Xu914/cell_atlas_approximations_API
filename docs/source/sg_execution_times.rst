@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:15.004** total execution time for 4 files **from all galleries**:
+**00:06.925** total execution time for 4 files **from all galleries**:
 
 .. container::
 
@@ -32,15 +32,15 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_python_gallery_2_average_expression.py` (``../gallery/python/2_average_expression.py``)
-     - 00:11.458
-     - 0.0
    * - :ref:`sphx_glr_python_gallery_3_cell_type.py` (``../gallery/python/3_cell_type.py``)
-     - 00:03.546
+     - 00:06.925
      - 0.0
    * - :ref:`sphx_glr_python_gallery_0_quickstart.py` (``../gallery/python/0_quickstart.py``)
      - 00:00.000
      - 0.0
    * - :ref:`sphx_glr_python_gallery_1_beginner_guide.py` (``../gallery/python/1_beginner_guide.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_python_gallery_2_average_expression.py` (``../gallery/python/2_average_expression.py``)
      - 00:00.000
      - 0.0

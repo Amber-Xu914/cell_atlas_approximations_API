@@ -98,8 +98,8 @@ proportions = (human_celltypes.loc["macrophage"] / human_celltypes.sum(axis=0)) 
 
 # Plot bar chart
 proportions.sort_values(ascending=False).plot(kind='bar')
-plt.xlabel('Organs')
-plt.ylabel('(%)')
+plt.xlabel('Organ')
+plt.ylabel('Percentage(%)')
 plt.title('Proportion of macrophage cells across organs')
 
 # Display bar chart
@@ -120,9 +120,9 @@ proportions = (human_celltypes.loc[cell_types] / human_celltypes.sum(axis=0)) * 
 
 # Plot bars for each cell type
 proportions.T.plot(kind="bar")
-plt.xlabel("Organs")
-plt.ylabel("(%)")
-plt.title("Proportion of cell types across organs")
+plt.xlabel("Organ")
+plt.ylabel("Percentage(%)")
+plt.title("Proportion of macrophage and T cells across organs")
 
 plt.tight_layout()
 
@@ -148,7 +148,8 @@ lung_pct = (human_celltypes["lung"] / human_celltypes["lung"].sum() * 100).sort_
 lung_pct[lung_pct > 0].plot(kind="bar")
 
 plt.title("Cell type proportions in lung")
-plt.ylabel("Percentage (%)")
+plt.xlabel("Cell type")
+plt.ylabel("Percentage(%)")
 plt.tight_layout()
 
 # %%
