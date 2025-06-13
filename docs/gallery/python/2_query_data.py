@@ -71,7 +71,10 @@ print(available_organisms)
 # Try the ``organs`` method to get the list of available organs for your chosen
 # organism:
 
-available_human_organs = api.organs(organism="h_sapiens", measurement_type='gene_expression')
+available_human_organs = api.organs(
+    organism="h_sapiens",
+    measurement_type='gene_expression'
+)
 
 print(available_human_organs)
 # %%
@@ -81,7 +84,11 @@ print(available_human_organs)
 # Try the ``celltypes`` method to retrieve the list of available cell types for
 # your chosen organism and organ:
 
-available_human_lung_celltypes = api.celltypes(organism="h_sapiens", organ="lung", measurement_type="gene_expression")
+available_human_lung_celltypes = api.celltypes(
+    organism="h_sapiens",
+    organ="lung",
+    measurement_type="gene_expression",
+)
 
 print(available_human_lung_celltypes)
 
@@ -123,7 +130,10 @@ human_celltypes
 # You can try the ``features`` method to query all available features for your
 # specified organism:
 
-available_human_features = api.features(organism='h_sapiens', measurement_type='gene_expression')
+available_human_features = api.features(
+    organism='h_sapiens',
+    measurement_type='gene_expression'
+)
 
 print(available_human_features)
 

@@ -3,15 +3,15 @@
 
 Exploring marker genes
 ======================
-Understanding which genes define a specific cell type is crucial for
-interpreting cell identity and tracking developmental trajectories. The
-`atlasapprox <https://atlasapprox.readthedocs.io/en/latest/index.html>`_  API
-provides access to cell atlas data across 30 species, including humans, mice,
-fish, plants, and worms.
+Marker genes are key to identifying specific cell types, helping researchers
+understand cell identity and track developmental processes—like how immune cells
+behave in the human lung. The `atlasapprox Python <https://atlasapprox.readthedocs.io/en/latest/index.html>`_
+API gives you access to cell atlas data across 30 species, from humans, mice,
+worms to plants.
 
-This tutorial will guide you through the process of retrieving and visualizing
-marker genes, identifying their expression patterns across tissues, and
-comparing their specificity across cell types. By the end, you'll be able to:
+In this tutorial, you'll learn how to retrieve marker genes for a cell type,
+analyze their expression and specificity, and visualize the results to uncover
+biological insights.
 """
 # %%
 #   - `Find marker genes for a specific cell type in an organ (e.g., T cells in the human lung) <marker_>`__
@@ -21,8 +21,9 @@ comparing their specificity across cell types. By the end, you'll be able to:
 # %%
 # Installing packages and initializing the API
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-# First, use pip to install the `atlasapprox` package along with the libraries needed for data visualization in this
-# tutorial. Run the following command in your terminal:
+# First, use pip to install the `atlasapprox` package along with the libraries
+# needed for data visualization in this tutorial. Run the following command in
+# your terminal:
 #
 #     ``pip install atlasapprox matplotlib seaborn pandas``
 #
@@ -158,12 +159,15 @@ plt.legend(bbox_to_anchor=(1, 1))
 # .. _sequence:
 # Querying gene sequences
 # ^^^^^^^^^^^^^^^^^^^^^^^
-# To learn more about a rare marker gene, for example, compare your marker gene
-# against already characterized genes — such as by running a BLAST search —
-# you first need to retrieve its sequence. Try the following code to get the raw
-# sequence of your marker genes:
+# To learn more about a rare marker gene, for example, by comparing it against
+# already characterized genes using a BLAST search, you first need to retrieve
+# its sequence. Try the following code to get the raw sequence of your marker
+# genes:
 
-sequence = api.sequences(organism='h_sapiens', features=human_lung_T_markers, measurement_type='gene_expression')
+sequence = api.sequences(
+    organism='h_sapiens',
+    features=human_lung_T_markers,
+    measurement_type='gene_expression')
 
 print(f"sequence type: {sequence['type']}")
 
