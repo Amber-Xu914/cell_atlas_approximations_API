@@ -42,7 +42,8 @@ api = atlasapprox.API()
 # %%
 # Exploring available organisms
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-# Let's start by retrieving all available organisms from the API to see which species you can work with:
+# Let's start by retrieving all available organisms from the API to see which
+# species you can work with:
 
 # Get available organisms
 organisms = api.organisms(measurement_type="gene_expression")
@@ -54,8 +55,9 @@ print(organisms)
 # .. _retrieve-distributions:
 # Retrieving cell type distribution across organs
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-# Now, let's use the ``celltypexorgan`` method to retrieve the distribution of cell types in the human cell atlas. This
-# will provide a clear overview of cell abundances and help identify which cell types are most prevalent across tissues.
+# Now, let's use the ``celltypexorgan`` method to retrieve the distribution of
+# cell types in the human cell atlas. This will provide a clear overview of cell
+# abundances and help identify which cell types are most prevalent across tissues.
 
 # Query cell types across all human organs
 human_celltypes = api.celltypexorgan(
