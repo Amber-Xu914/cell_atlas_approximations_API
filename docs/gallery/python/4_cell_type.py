@@ -62,8 +62,7 @@ print(organisms)
 # Query cell types across all human organs
 human_celltypes = api.celltypexorgan(
     organism="h_sapiens",
-    measurement_type="gene_expression"
-)
+    measurement_type="gene_expression")
 
 # Display the cell type x organ table
 human_celltypes

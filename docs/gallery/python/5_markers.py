@@ -56,7 +56,8 @@ human_lung_T_markers = api.markers(
     organ='lung',
     cell_type='T',
     number=10,
-    measurement_type='gene_expression')
+    measurement_type='gene_expression'
+)
 
 human_lung_T_markers
 
@@ -71,7 +72,8 @@ human_lung_T_markers_exp = api.average(
     organism='h_sapiens',
     organ='lung',
     features=human_lung_T_markers,
-    measurement_type='gene_expression')
+    measurement_type='gene_expression'
+)
 
 human_lung_T_markers_exp
 
@@ -99,7 +101,8 @@ human_lung_fraction = api.fraction_detected(
     organism='h_sapiens',
     organ='lung',
     features=human_lung_T_markers,
-    measurement_type='gene_expression')
+    measurement_type='gene_expression'
+)
 
 human_lung_fraction
 
@@ -121,10 +124,12 @@ data = pd.melt(
     human_lung_T_markers_exp.reset_index(),
     id_vars='index',
     var_name='Cell types',
-    value_name='Expression').rename(columns={'index': 'Genes'})
+    value_name='Expression').rename(columns={'index': 'Genes'}
+)
 data['Fraction'] = pd.melt(
     human_lung_fraction.reset_index(),
-    id_vars='index')['value'].clip(0, 1)
+    id_vars='index'
+)['value'].clip(0, 1)
 
 # Plot the data
 plt.figure(figsize=(9, 4))
@@ -134,7 +139,8 @@ sns.scatterplot(
     y='Genes',
     size='Fraction',
     hue='Expression',
-    sizes=(30, 200))
+    sizes=(30, 200)
+)
 
 plt.xticks(rotation=90)
 plt.legend(bbox_to_anchor=(1, 1))
@@ -167,7 +173,9 @@ plt.legend(bbox_to_anchor=(1, 1))
 sequence = api.sequences(
     organism='h_sapiens',
     features=human_lung_T_markers,
-    measurement_type='gene_expression')
+    measurement_type='gene_expression'
+
+)
 
 print(f"sequence type: {sequence['type']}")
 
