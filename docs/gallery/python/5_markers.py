@@ -52,11 +52,11 @@ api = atlasapprox.API()
 # compared to other cell types in the lung.
 
 human_lung_T_markers = api.markers(
-    organism='h_sapiens',
-    organ='lung',
-    cell_type='T',
+    organism="h_sapiens",
+    organ="lung",
+    cell_type="T",
     number=10,
-    measurement_type='gene_expression'
+    measurement_type="gene_expression"
 )
 
 human_lung_T_markers
@@ -69,13 +69,14 @@ human_lung_T_markers
 # the human lung, you can use the ``average`` method:
 
 human_lung_T_markers_exp = api.average(
-    organism='h_sapiens',
-    organ='lung',
+    organism="h_sapiens",
+    organ="lung",
     features=human_lung_T_markers,
-    measurement_type='gene_expression'
+    measurement_type="gene_expression"
 )
 
 human_lung_T_markers_exp
+
 
 # %%
 # Understanding the output
@@ -98,10 +99,10 @@ human_lung_T_markers_exp
 # type, apply the ``fraction_detected`` method:
 
 human_lung_fraction = api.fraction_detected(
-    organism='h_sapiens',
-    organ='lung',
+    organism="h_sapiens",
+    organ="lung",
     features=human_lung_T_markers,
-    measurement_type='gene_expression'
+    measurement_type="gene_expression"
 )
 
 human_lung_fraction
@@ -120,25 +121,28 @@ human_lung_fraction
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 # Reshape and prepare data
+# Prepare data for plotting
 data = pd.melt(
     human_lung_T_markers_exp.reset_index(),
-    id_vars='index',
-    var_name='Cell types',
-    value_name='Expression').rename(columns={'index': 'Genes'}
-)
-data['Fraction'] = pd.melt(
+    id_vars="index",
+    var_name="Cell types",
+    value_name="Expression"
+).rename(columns={"index": "Genes"})
+
+# Add fraction detected, clipped between 0 and 1
+data["Fraction"] = pd.melt(
     human_lung_fraction.reset_index(),
-    id_vars='index'
-)['value'].clip(0, 1)
+    id_vars="index"
+)["value"].clip(0, 1)
 
 # Plot the data
 plt.figure(figsize=(9, 4))
 sns.scatterplot(
     data=data,
-    x='Cell types',
-    y='Genes',
-    size='Fraction',
-    hue='Expression',
+    x="Cell types",
+    y="Genes",
+    size="Fraction",
+    hue="Expression",
     sizes=(30, 200)
 )
 
@@ -170,17 +174,19 @@ plt.legend(bbox_to_anchor=(1, 1))
 # its sequence. Try the following code to get the raw sequence of your marker
 # genes:
 
+# Retrieve sequences for human lung T cell markers
 sequence = api.sequences(
-    organism='h_sapiens',
+    organism="h_sapiens",
     features=human_lung_T_markers,
-    measurement_type='gene_expression'
-
+    measurement_type="gene_expression"
 )
 
+# Print sequence type
 print(f"sequence type: {sequence['type']}")
 
-for item, seq in zip(human_lung_T_markers, sequence['sequences']):
-    print(f'{item}:')
+# Print each gene and its sequence
+for item, seq in zip(human_lung_T_markers, sequence["sequences"]):
+    print(f"{item}:")
     print(seq)
 
 # %%
