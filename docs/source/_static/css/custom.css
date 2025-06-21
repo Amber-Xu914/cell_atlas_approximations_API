@@ -207,3 +207,14 @@ h3 {
     font-size: 1.2em;
     font-weight: bold;
 }
+
+/* hide downloading bottons */
+div.sphx-glr-download,
+div.sphx-glr-footer {
+    display: none !important;
+}
+
+/* Hide running time */
+p.sphx-glr-script-out {
+    display: none !important;
+}

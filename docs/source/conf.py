@@ -36,15 +36,16 @@ def file_name_sort_key(example):
     return os.path.basename(example)
 
 sphinx_gallery_conf = {
-    "filename_pattern": "/.*.py",
-    "examples_dirs": [
-        "../gallery/python",
-    ],
-    "gallery_dirs": [
-        "python/gallery",
-    ],
+    "filename_pattern": r".*\.py",
+    "examples_dirs": ["../gallery/python"],
+    "gallery_dirs": ["python/gallery"],
     'within_subsection_order': file_name_sort_key,
     "remove_config_comments": True, # hides config-style comments like thumbnail_path
+    'download_all_examples': False, # hide zip downloading tab
+    'show_memory': False,            # hide memory source
+    'show_signature': False,
+    'show_api_usage': False,
+    'min_reported_time': float('inf'), # hide running time
 }
 
 # -- Options for HTML output -------------------------------------------------
@@ -57,5 +58,5 @@ html_css_files = ['css/custom.css']
 extensions += ["sphinx_new_tab_link"]
 
 # optional tweaks
-new_tab_link_show_external_link_icon = True   # add an icon after each link
+new_tab_link_show_external_link_icon = False   # add an icon after each link
 new_tab_link_enable_referrer        = True   # keep the HTTP referrer if you need it

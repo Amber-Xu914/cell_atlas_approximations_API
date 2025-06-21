@@ -5,51 +5,72 @@ Beginner guide
 ==============
 
 The `atlasapprox <https://atlasapprox.readthedocs.io/en/latest/index.html>`_ API provides access to approximated
-single-cell data across 30 species, including both animals and plants. You can explore data from species such as *Homo
-sapiens* (humans), *Mus musculus* (mice), *Arabidopsis thaliana* (thale cress), and *Zea mays* (corn). Follow this guide
-to get started with installation, basic usage, and example queries.
+single-cell data across 30 species, including both animals and plants. You can explore data from species such as *Homo sapiens* (humans), *Mus musculus* (mice), *Arabidopsis thaliana* (thale cress), and *Zea mays* (corn).
+This guide walks through installing the package, setting up the API, and running basic queries using simple examples.
 """
 
 # %%
-# To ensure consistent dependencies, setting up a virtual environment is recommended before installing the package.
-# Here's one way to do it:
+# Setting up a virtual environment (optional)
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# It's recommended to use a virtual environment to manage dependencies. Run the following command:
 #
-# Create a virtual environment:
-#     ``python -m venv myenv``
+#     ``python -m venv venv``
 #
-# Activate your environment (use the appropriate command for your OS):
+# Activate the environment using the appropriate command for your operating system:
 #
 # For macOS/Linux users:
-#     ``source myenv/bin/activate``
+#     ``source venv/bin/activate``
 #
 # For Windows users:
-#     ``myenv\Scripts\activate``
-
+#     ``venv\Scripts\activate``
 
 # %%
 # Installation
 # ^^^^^^^^^^^^
-# Use pip to install the *atlasapprox* Python package:
+# Install the ``atlasapprox`` Python package using *pip*:
 #
 # ``pip install atlasapprox``
 
 # %%
-# Each time you work with the API, start by importing the *atlasapprox* Python package and instantiate the ``API``
-# project:
+# Then, import the package and instantiate the ``API`` object:
 
 import atlasapprox
+
 api = atlasapprox.API()
 
 # %%
-# Easy start: getting average gene expression
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-# The ``average`` function allows you to retrieve gene expression levels for selected genes in a specific organ of an
+# Querying available data
+# ^^^^^^^^^^^^^^^^^^^^^^^
+# Explore available organisms, organs, and cell types using the following methods:
+
+# %%
+
+# List available organisms
+available_organisms = api.organisms()
+print(available_organisms)
+
+# %%
+
+# List available organs for humans
+available_organs = api.organs(organism="h_sapiens")
+print(available_organs)
+
+# %%
+
+# List available cell types in the human lung
+available_celltypes = api.celltypes(organism="h_sapiens", organ="lung")
+print(available_celltypes)
+
+
+# %%
+# Exploring average gene expression
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# The ``average`` method allows you to retrieve gene expression levels for selected genes in a specific organ of an
 # organism.
 #
 # The following example shows how to examine the average expression of five genes
 # (*COL13A1*, *COL14A1*, *TGFBI*, *PDGFRA*, *GZMA*) in the human lung:
 
-# Call API function with params
 avg_gene_expr_lung = api.average(
     organism = "h_sapiens",
     organ = "lung",
@@ -63,7 +84,7 @@ avg_gene_expr_lung
 # %%
 # Understanding the output
 # ------------------------
-# This method returns a **pandas.DataFrame** where:
+# The ``average`` method returns a **pandas.DataFrame** where:
 #
 # - Each row represents a gene.
 # - Each column corresponds to a cell type.
@@ -72,8 +93,7 @@ avg_gene_expr_lung
 # %%
 # Conclusion
 # ^^^^^^^^^^
-# This tutorial provided a general beginner guide to using the *atlasapprox* Python package. For more detailed
-# information, refer to the official
-# `documentation <https://atlasapprox.readthedocs.io/en/latest/python/index.html>`_.
+# This guide covers setup and data querying with a basic example. For more detailed
+# information, refer to the official `documentation <https://atlasapprox.readthedocs.io/en/latest/python/index.html>`_.
 
 # sphinx_gallery_thumbnail_path = '_static/beginner_guide.png'
