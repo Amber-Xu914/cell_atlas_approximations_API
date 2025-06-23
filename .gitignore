@@ -150,3 +150,10 @@ dmypy.json
 atlasapprox.Rcheck/
 .Rhistory
 .RData
+
+# sphinx gallery src
+docs/source/_build
+docs/source/python/gallery
+
+# OS system file
+**/.DS_Store
