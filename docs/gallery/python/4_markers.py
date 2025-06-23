@@ -180,3 +180,5 @@ for gene, seq in zip(human_lung_T_markers, sequence['sequences']):
 #
 # For more detailed information, please refer to the
 # `official documentation <https://atlasapprox.readthedocs.io/en/latest/python/index.html>`_.
+
+# sphinx_gallery_thumbnail_path = '_static/markers.png'

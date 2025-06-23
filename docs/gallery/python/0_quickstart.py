@@ -20,3 +20,5 @@ expression = api.average(organism="h_sapiens", organ="lung", features=["CD4", "C
 fig, ax = plt.subplots(figsize=(7, 4))
 sns.heatmap(expression, ax=ax)
 fig.tight_layout()
+
+# sphinx_gallery_thumbnail_path = '_static/quickstart.png'

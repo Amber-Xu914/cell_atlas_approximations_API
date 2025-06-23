@@ -228,3 +228,5 @@ fig.tight_layout()
 # and organism parameters to explore new biological insights.
 #
 # For more detailed information, please refer to the `official documentation <https://atlasapprox.readthedocs.io/en/latest/python/index.html>`_.
+
+# sphinx_gallery_thumbnail_path = '_static/cell_type.png'

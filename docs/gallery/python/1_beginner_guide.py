@@ -96,3 +96,5 @@ avg_gene_expr_lung
 # ^^^^^^^^^^
 # This guide covers setup and basic data querying. For more detailed
 # information, refer to the official `documentation <https://atlasapprox.readthedocs.io/en/latest/python/index.html>`_.
+
+# sphinx_gallery_thumbnail_path = '_static/beginner_guide.png'

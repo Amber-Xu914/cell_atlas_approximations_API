@@ -295,3 +295,5 @@ fig.tight_layout()
 # atlasapprox API functions and visualize the data using Python libraries such
 # as `Seaborn <https://seaborn.pydata.org/>`_ and `Matplotlib <https://matplotlib.org/>`_.
 # For further details, consult the `official documentation <https://atlasapprox.readthedocs.io/en/latest/python/index.html>`_.
+
+# sphinx_gallery_thumbnail_path = '_static/average_expression.png'
