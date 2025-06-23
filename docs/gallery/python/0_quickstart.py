@@ -2,7 +2,8 @@
 Quickstart
 ==========
 
-This example shows a quick and easy example of how to use atlasapprox to get and plot the expression of some gees in a specific organ of a specific organism.
+This example shows a quick and easy example of how to use atlasapprox to get and plot the expression of some gees in a
+specific organ of a specific organism.
 """
 
 import matplotlib.pyplot as plt
