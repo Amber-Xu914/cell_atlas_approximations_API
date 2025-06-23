@@ -2,7 +2,8 @@
 Quickstart
 ==========
 
-This example shows a quick and easy example of how to use atlasapprox to get and plot the expression of some gees in a specific organ of a specific organism.
+This example shows a quick and easy example of how to use atlasapprox to get and plot the expression of some gees in a
+specific organ of a specific organism.
 """
 
 import matplotlib.pyplot as plt
@@ -19,3 +20,5 @@ expression = api.average(organism="h_sapiens", organ="lung", features=["CD4", "C
 fig, ax = plt.subplots(figsize=(7, 4))
 sns.heatmap(expression, ax=ax)
 fig.tight_layout()
+
+# sphinx_gallery_thumbnail_path = '_static/quickstart.png'
